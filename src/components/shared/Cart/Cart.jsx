@@ -13,10 +13,7 @@ const Cart = () => {
     const pathname = usePathname();
     const [showCart, setShowCart] = useState(false);
 
-    const totalPrice = cart?.reduce((total, item) => {
-        const itemPrice = item?.discountPrice;
-        return total + (itemPrice * item?.quantity);
-    }, 0);
+    const totalPrice = cart?.reduce((total, item) => total + (item?.discountPrice * item?.quantity), 0);
 
     // pathnames that hide cart btn
     const hiddenPaths = ['/checkout', '/account/my-orders', '/account/profile', '/account/wishlist'];
