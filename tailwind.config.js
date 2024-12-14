@@ -1,5 +1,6 @@
-/** @type {import('tailwindcss').Config} */
-import daisyui from 'daisyui'
+// tailwind.config.js
+// const daisyui = require('daisyui');
+
 module.exports = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -22,8 +23,7 @@ module.exports = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
-
     },
   },
-  plugins: [daisyui],
+  plugins: [require("daisyui")],
 };
