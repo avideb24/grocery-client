@@ -8,7 +8,7 @@ import CategoryProducts from '@/components/shared/CategoryProducts/CategoryProdu
 
 const HomePage = async () => {
 
-    const mainCategoryId = process.env.NEXT_PUBLIC_MainCategoryId;
+    const mainCategoryId = 'e8ceddc1-2734-4ddf-b3aa-e8bbc47adcb6';
 
     const allCategoryData = await getHomePageProducts(mainCategoryId)
 
