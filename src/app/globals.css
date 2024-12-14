@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* custom CSS */
+
+/* Hide scrollbar for Chrome, Safari, and Opera */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+
+/* Hide the arrows from input field(number) */
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+
+/* Prevent text selection */
+/* body {
+  -webkit-user-select: none; 
+  -moz-user-select: none;    
+  -ms-user-select: none;    
+  user-select: none;      
+} */
+
+
+.sidebar-shadow{
+  box-shadow: 3px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.footer-shadow-top {
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.sidebar {
+  overflow-y: scroll; /* Enable vertical scrolling */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Webkit browsers */
+.sidebar::-webkit-scrollbar {
+  width: 0;
+}
+
+/* Show scrollbar on hover */
+.sidebar:hover {
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: #888 #f1f1f1; /* Firefox */
+}
+
+/* Webkit browsers */
+.sidebar:hover::-webkit-scrollbar {
+  width: 5px;
+}
+
+.sidebar:hover::-webkit-scrollbar-track {
+  background: #888; /* Background of the scrollbar track */
+  border-radius: 10px;
+}
+
+.sidebar:hover::-webkit-scrollbar-thumb {
+  background: #888; /* Color of the scrollbar handle */
+  border-radius: 10px;
+}
+
+.sidebar:hover::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Color when hovered */
+}
+
+/* common scrollbar */
+.common-scrollbar::-webkit-scrollbar{
+  width: 5px;
+}
+.common-scrollbar {
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: #888 #f1f1f1; /* Firefox */
+}
+
