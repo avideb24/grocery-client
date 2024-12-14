@@ -17,11 +17,11 @@ const termAndConditionPage = () => {
                     <p className='text-sm md:text-base'>Welcome to Grocery Mart</p>
                 </div>
 
-                <p>Grocery Mart ("Grocery") provides access to the Grocery.com website, the mobile application, or any other media ("Website") subject to the terms and conditions ("Terms") outlined on this page. By using the Website, you, as a registered or guest user who meets the eligibility criteria stated here ("User"), agree to adhere to these Terms. Please read them carefully. Your continued use of the Website signifies your acceptance of these Terms. If you do not agree to these Terms, you should not use the Website or our services.</p>
+                <p>Grocery Mart Grocery provides access to the Grocery.com website, the mobile application, or any other media Website subject to the terms and conditions Terms outlined on this page. By using the Website, you, as a registered or guest user who meets the eligibility criteria stated here User, agree to adhere to these Terms. Please read them carefully. Your continued use of the Website signifies your acceptance of these Terms. If you do not agree to these Terms, you should not use the Website or our services.</p>
 
                 <p>By accepting these Terms, you also agree to follow Grocery Policies (including but not limited to the Privacy Policy available at [Privacy Policy Link]) as updated from time to time.</p>
 
-                <p>In these Terms, references to "you" and "User" refer to the end-user/customer accessing the Website and using the services provided through the Website. References to "Website," "Grocery," "Grocery.com," "we," "us," and "our" refer to Grocery Limited.</p>
+                <p>In these Terms, references to you and User refer to the end-user/customer accessing the Website and using the services provided through the Website. References to Website, Grocery,Grocery.com, we, us, and our refer to Grocery Limited.</p>
 
                 <p>The content herein constitutes an electronic record in terms of the Information & Communication Technology Act, 2006 and its applicable rules and amendments. Therefore, this document does not require any physical or digital signatures and constitutes a valid and binding agreement between the Website and the User.</p>
 
