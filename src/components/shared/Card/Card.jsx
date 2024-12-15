@@ -10,7 +10,7 @@ const Card = ({ product }) => {
     return (
         <div className='w-36 h-max p-2 rounded-[6px] space-y-1 border border-slate-200 dark:border-slate-600 hover:border-primary-color dark:hover:border-primary-color duration-150 relative overflow-hidden shadow-md hover:shadow-lg mb-1'>
 
-            <AddToWishlist productId={product?.id} />
+            {/* <AddToWishlist productId={product?.id} /> */}
 
             {/* image */}
             <Link href={`/products/${product?.title?.toLowerCase().replace(/ /g, '-')}`}>

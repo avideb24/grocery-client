@@ -9,17 +9,31 @@ import { RiLoginCircleLine, RiLogoutCircleFill } from "react-icons/ri";
 import { MdChecklist } from "react-icons/md";
 import { useUser } from '@/Provider/UserProvider';
 import Button from '@/components/shared/Buttons/Button/Button';
+import { showAlertWithTheme } from '@/components/Theme/AlertTheme';
 
 
 const AccountPage = () => {
 
     const { setUserId, user, setUser, userLoading } = useUser();
+    const router = useRouter();
 
 
     const handleLogout = () => {
+
+        const isDarkMode = localStorage.getItem('theme') == 'dark';
+
         setUser(null);
         setUserId(null);
         localStorage.setItem('userId', null);
+        router.push('/');
+
+        showAlertWithTheme({
+            position: "top-end",
+            icon: "success",
+            title: "Logout Successful!",
+            showConfirmButton: false,
+            timer: 1500
+        }, isDarkMode);
     };
 
     return (
@@ -57,13 +71,13 @@ const AccountPage = () => {
                                         <IoIosArrowForward />
                                     </Link>
 
-                                    <Link href={'/account/wishlist'} className={`w-full flex justify-between items-center gap-3 font-semibold hover:bg-slate-200 dark:hover:bg-slate-600 p-2 shadow-sm border border-slate-100 rounded-[4px]`}>
+                                    {/* <Link href={'/account/wishlist'} className={`w-full flex justify-between items-center gap-3 font-semibold hover:bg-slate-200 dark:hover:bg-slate-600 p-2 shadow-sm border border-slate-100 rounded-[4px]`}>
                                         <p className='flex items-center gap-2'>
                                             <MdChecklist className='text-base' />
                                             <span>Wishlist</span>
                                         </p>
                                         <IoIosArrowForward />
-                                    </Link>
+                                    </Link> */}
 
                                     <button onClick={handleLogout} className='w-full flex justify-between items-center gap-3 font-semibold hover:bg-slate-200 dark:hover:bg-slate-600 p-2 shadow-sm border border-slate-100 rounded-[4px]'>
                                         <p className='flex items-center gap-2'>

@@ -10,11 +10,12 @@ import Button from "../Buttons/Button/Button";
 import Image from "next/image";
 import userImg from '@/assets/user.png';
 import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Location from "./Location/Location";
 import { useUser } from "@/Provider/UserProvider";
 import AxiosPublic from "@/libs/Axios/AxiosPublic";
 import Card from "../Card/Card";
+import { showAlertWithTheme } from "@/components/Theme/AlertTheme";
 
 
 const Navbar = ({ showSidebar, setShowSidebar }) => {
@@ -26,6 +27,7 @@ const Navbar = ({ showSidebar, setShowSidebar }) => {
     const [searchText, setSearchText] = useState('');
     const [searchProducts, setSearchProducts] = useState([]);
     const axiosPublic = AxiosPublic();
+    const router = useRouter();
 
     // update searchProducts for every searchtext change
     useEffect(() => {
@@ -57,8 +59,19 @@ const Navbar = ({ showSidebar, setShowSidebar }) => {
 
     // logout fn
     const handleLogout = () => {
+
+        const isDarkMode = localStorage.getItem('theme') == 'dark';
+
         setUser(null);
         localStorage.setItem('userId', null);
+        router.push('/');
+        showAlertWithTheme({
+            position: "top-end",
+            icon: "success",
+            title: "Logout Successful!",
+            showConfirmButton: false,
+            timer: 1500
+        }, isDarkMode);
     };
 
 
@@ -102,7 +115,7 @@ const Navbar = ({ showSidebar, setShowSidebar }) => {
                                                         <Image src={userImg} className="rounded-full mt-[2px]" width={30} height={30} alt="User Image" />
                                                     </button>
                                                     {/* user menu */}
-                                                    <div className={`w-36 bg-primary-bg dark:bg-secondary-bg border border-slate-300 dark:border-slate-500 absolute -left-28  ${showUserMenu ? 'opacity-100 visible -bottom-[135px]' : 'opacity-0 invisible -bottom-28'} transition-all duration-200 shadow-md py-2 font-semibold rounded-[4px]`} >
+                                                    <div className={`w-36 bg-primary-bg dark:bg-secondary-bg border border-slate-300 dark:border-slate-500 absolute -left-28  ${showUserMenu ? 'opacity-100 visible -bottom-28' : 'opacity-0 invisible -bottom-24'} transition-all duration-200 shadow-md py-2 font-semibold rounded-[4px]`} >
 
                                                         <Link href={'/account/profile'} onClick={() => setShowUserMenu(false)} className="flex justify-center items-center gap-1 px-3 py-1 hover:bg-slate-300 dark:hover:bg-slate-600">
                                                             <span>Profile</span>
@@ -110,9 +123,9 @@ const Navbar = ({ showSidebar, setShowSidebar }) => {
                                                         <Link href={'/account/my-orders'} onClick={() => setShowUserMenu(false)} className={`flex justify-center items-center gap-1 px-4 py-1 hover:bg-slate-300 dark:hover:bg-slate-600`}>
                                                             <span>My Orders</span>
                                                         </Link>
-                                                        <Link href={'/account/wishlist'} onClick={() => setShowUserMenu(false)} className={`flex justify-center items-center gap-1 px-4 py-1 hover:bg-slate-300 dark:hover:bg-slate-600`}>
+                                                        {/* <Link href={'/account/wishlist'} onClick={() => setShowUserMenu(false)} className={`flex justify-center items-center gap-1 px-4 py-1 hover:bg-slate-300 dark:hover:bg-slate-600`}>
                                                             <span>Wishlist</span>
-                                                        </Link>
+                                                        </Link> */}
                                                         <button onClick={handleLogout} className="w-full flex justify-center items-center gap-1 px-3 py-1 hover:bg-slate-300 dark:hover:bg-slate-600">
                                                             <span>Logout</span>
                                                         </button>
