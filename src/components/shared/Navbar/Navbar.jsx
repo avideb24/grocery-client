@@ -95,7 +95,7 @@ const Navbar = ({ showSidebar, setShowSidebar }) => {
 
                     {/* search bar */}
                     <div className="hidden md:block col-span-2 relative">
-                        <input type="text" onChange={(e) => setSearchText(e.target.value)} name="search" className="w-full bg-transparent px-2 py-1 border border-slate-300 outline-none rounded-[4px]" placeholder="Search Products (e.g. fish, milk, potato)" />
+                        <input type="text" onChange={(e) => setSearchText(e.target.value)} name="search" className="w-full bg-transparent px-2 py-1 border border-slate-300 outline-none rounded-[4px]" value={searchText} placeholder="Search Products (e.g. fish, milk, potato)" />
                         <p className="absolute top-[5px] right-3 p-1"><LuSearch /></p>
                     </div>
 
@@ -163,7 +163,7 @@ const Navbar = ({ showSidebar, setShowSidebar }) => {
                 </div>
 
                 {/* search result's area */}
-                <div className={`${searchText.length > 0 ? '' : 'hidden'} absolute left-[-10px] right-[-10px] top-20 md:top-12 z-[60] w-[calc(100% + 20px)] h-screen bg-primary-bg dark:bg-secondary-bg overflow-y-auto px-5 py-3`}>
+                <div className={`${searchText?.length > 0 ? '' : 'hidden'} absolute left-[-10px] right-[-10px] top-20 md:top-12 z-[60] w-[calc(100% + 20px)] h-screen bg-primary-bg dark:bg-secondary-bg overflow-y-auto px-5 py-3`}>
                     <h2 className="font-semibold pb-4">Search Result For {`'${searchText}'`}</h2>
                     {
                         loading ?
@@ -180,9 +180,9 @@ const Navbar = ({ showSidebar, setShowSidebar }) => {
                                         <div className="flex flex-wrap justify-center sm:justify-start gap-2 md:gap-4">
                                             {
                                                 searchProducts?.map(product =>
-                                                    <div key={product?.id} className="">
+                                                    <Link href={`/products/${product?.id}`} onClick={() => setSearchText('')} key={product?.id} className="block">
                                                         <Card product={product} />
-                                                    </div>
+                                                    </Link>
                                                 )
                                             }
                                         </div>
