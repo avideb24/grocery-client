@@ -25,6 +25,7 @@ const Navbar = ({ showSidebar, setShowSidebar }) => {
     const pathname = usePathname();
     const { user, setUser, userLoading } = useUser();
     const [searchText, setSearchText] = useState('');
+    const [loading, setLoading] = useState(false);
     const [searchProducts, setSearchProducts] = useState([]);
     const axiosPublic = AxiosPublic();
     const router = useRouter();
@@ -32,10 +33,14 @@ const Navbar = ({ showSidebar, setShowSidebar }) => {
     // update searchProducts for every searchtext change
     useEffect(() => {
         if (searchText.length > 0) {
+
+            setLoading(true);
+
             const fetchProducts = async () => {
                 const res = await axiosPublic.get(`/api/user/product/search?search=${searchText}`);
                 if (res.data.success) {
                     setSearchProducts(res.data.data);
+                    setLoading(false);
                 }
 
             };
@@ -161,18 +166,28 @@ const Navbar = ({ showSidebar, setShowSidebar }) => {
                 <div className={`${searchText.length > 0 ? '' : 'hidden'} absolute left-[-10px] right-[-10px] top-20 md:top-12 z-[60] w-[calc(100% + 20px)] h-screen bg-primary-bg dark:bg-secondary-bg overflow-y-auto px-5 py-3`}>
                     <h2 className="font-semibold pb-4">Search Result For {`'${searchText}'`}</h2>
                     {
-                        searchProducts?.length == 0 ?
-                            <div className="text-red-600 text-center mt-32 font-bold">No Product Found!</div>
-                            :
-                            <div className="flex flex-wrap justify-center sm:justify-start gap-2 md:gap-4">
-                                {
-                                    searchProducts?.map(product =>
-                                        <div key={product?.id} className="">
-                                            <Card product={product} />
-                                        </div>
-                                    )
-                                }
+                        loading ?
+                            <div className="py-10 text-primary-color flex justify-center items-center gap-1">
+                                <span>Searching</span>
+                                <span className="loading loading-dots loading-xs mt-2"></span>
                             </div>
+                            :
+                            <>
+                                {
+                                    searchProducts?.length == 0 ?
+                                        <div className="text-red-600 text-center mt-32 font-bold">No Product Found!</div>
+                                        :
+                                        <div className="flex flex-wrap justify-center sm:justify-start gap-2 md:gap-4">
+                                            {
+                                                searchProducts?.map(product =>
+                                                    <div key={product?.id} className="">
+                                                        <Card product={product} />
+                                                    </div>
+                                                )
+                                            }
+                                        </div>
+                                }
+                            </>
                     }
                 </div>
             </div>
