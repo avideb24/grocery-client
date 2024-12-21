@@ -8,18 +8,14 @@ import CategoryProducts from '@/components/shared/CategoryProducts/CategoryProdu
 
 const HomePage = async () => {
 
-    const mainCategoryId = 'e8ceddc1-2734-4ddf-b3aa-e8bbc47adcb6';
-
-    const allCategoryData = await getHomePageProducts(mainCategoryId)
-
-    // console.log(allCategoryData);
-
+    const mainCategoryId = process.env.NEXT_PUBLIC_MainCategoryId;
+    const allCategoryData = await getHomePageProducts(mainCategoryId);
 
     return (
         <div>
 
             <PageTitle title={'Home'} />
-
+            
             {/* stories */}
             <Stories />
 
