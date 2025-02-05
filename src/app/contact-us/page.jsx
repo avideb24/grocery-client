@@ -23,18 +23,17 @@ const ContactUsPage = () => {
                 {/* mobile */}
                 <p className='flex items-end gap-3 pb-2'>
                     <span className='font-bold flex items-end gap-1'><IoIosCall className='text-lg md:text-3xl' /> Mobile :</span>
-                    <a href="tel:+07216575641" className='hover:underline'>+07216575641</a>
+                    <a href="tel:+07216575641" className='hover:underline'>+8801641443111</a>
                 </p>
                 {/* mail */}
                 <p className='flex items-end gap-3 pb-2'>
                     <span className='font-bold flex items-end gap-1'><IoIosMailOpen className='text-lg md:text-3xl' /> Email :</span>
-                    <a href="mailto:demo-mail@gmail.com" className='hover:underline'>demo-mail@gmail.com</a>
+                    <a href="mailto:demo-mail@gmail.com" className='hover:underline'>rakib@vida.com.bd</a>
                 </p>
                 {/* location */}
                 <div className='flex items-end gap-3 pb-2'>
                     <span className='font-bold flex items-end gap-1'><FaLocationDot className='text-lg md:text-3xl' /> Office :</span>
-                    <address className='not-italic'>ka/D Block, Mirpur,
-                        Dhaka, Bangladesh.</address>
+                    <address className='not-italic'>236/5/A, South Prierbag, Amtola Bazar, Mirpur, Dhaka-1216</address>
                 </div>
 
             </div>
