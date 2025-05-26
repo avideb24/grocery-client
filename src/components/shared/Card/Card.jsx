@@ -19,13 +19,13 @@ const Card = ({ product }) => {
 
             {/* title */}
             <Link href={`/products/${product?.title?.toLowerCase().replace(/ /g, '-')}`}>
-                <h2 className='h-9 mt-1 hover:underline leading-tight text-ellipsis overflow-hidden' style={{ wordBreak: 'break-word', overflowWrap: 'break-word', whiteSpace: 'normal' }}>
+                <h2 className='h-9 2xl:h-11 mt-1 hover:underline leading-tight text-ellipsis overflow-hidden' style={{ wordBreak: 'break-word', overflowWrap: 'break-word', whiteSpace: 'normal' }}>
                     {product?.title?.length > 30 ? `${product?.title?.slice(0,30)}...` : `${product?.title}`}
                 </h2>
             </Link>
 
             {/* weight */}
-            <p className='text-[10px] md:text-xs opacity-85'>{product?.weight}</p>
+            <p className='text-[10px] md:text-xs 2xl:text-base opacity-85'>{product?.weight}</p>
 
             {/* discounted and regular price */}
             <p className='flex items-center gap-1'>

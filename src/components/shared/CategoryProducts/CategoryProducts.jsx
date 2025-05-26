@@ -62,10 +62,10 @@ const CategoryProducts = ({ categoryTitle, subCategoryTitle, products, relatedPr
                         {/* category name and btns */}
                         <div className='flex justify-between items-center gap-5 pb-3'>
                             <h2 className='text-lg md:text-xl font-bold capitalize'>{relatedProducts ? categoryTitle : subCategoryTitle}</h2>
-                            <div className='flex-1 h-[1px] bg-slate-300'></div>
+                            <div className='flex-1 h-[1px]  2xl:mt-1 bg-slate-300'></div>
 
                             <div className='flex items-center gap-2'>
-                                <div className='flex items-center gap-2 text-primary-color text-lg md:text-xl'>
+                                <div className='flex items-center gap-2 text-primary-color text-lg md:text-xl 2xl:text-[22px]'>
                                     {/* prev btn */}
                                     <button onClick={handlePrevClick}><FaCircleChevronLeft /></button>
                                     {/* next btn */}
