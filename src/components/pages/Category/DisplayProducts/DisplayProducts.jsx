@@ -10,7 +10,9 @@ import { getCategoryId } from '@/libs/Sidebar/getCategoryId';
 import { getSubCategoryProducts } from '@/libs/Products/getSubCategoryProducts';
 import { getCategoryProducts } from '@/libs/Products/getCategoryProducts';
 
+
 const DisplayProducts = ({ categoryTitle, subCategories }) => {
+
     const searchParams = useSearchParams();
     const subCategoryQuery = searchParams.get('subCategory');
     const [displayProducts, setDisplayProducts] = useState([]);
@@ -59,12 +61,6 @@ const DisplayProducts = ({ categoryTitle, subCategories }) => {
         setDisplayProducts(sortedProducts);
     };
 
-    if (isLoading) {
-        return <div className='w-full flex justify-center items-center pt-32 lg:pt-48'>
-            <span className="loading loading-bars loading-lg bg-primary-color"></span>
-        </div>;
-    };
-
 
     return (
         <div>
@@ -81,36 +77,56 @@ const DisplayProducts = ({ categoryTitle, subCategories }) => {
             </div>
 
             <div className='py-4 flex flex-wrap gap-2'>
-                <Link href={`/categories/${categoryTitle?.toLowerCase()?.replace(/\s+/g, '-').replace(/&/g, 'and')}`}
-                    onClick={() => setActiveCategory('all')}
+                <button
+                    onClick={() => {
+                        setActiveCategory('all');
+                        const url = new URL(window.location);
+                        url.searchParams.delete('subCategory');
+                        window.history.pushState({}, '', url);
+                    }}
                     className={`${activeCategory == 'all' ? 'bg-primary-color text-secondary-text' : ''} px-3 py-1 font-semibold border-2 border-primary-color hover:bg-primary-color hover:text-secondary-text rounded-full duration-200`}>
                     All Products
-                </Link>
+                </button>
+
                 {
                     subCategories?.map(subCategory =>
-                        <Link href={{
-                            pathname: `/categories/${categoryTitle?.toLowerCase()?.replace(/\s+/g, '-').replace(/&/g, 'and')}`,
-                            query: { subCategory: subCategory?.title?.toLowerCase()?.replace(/\s+/g, '-').replace(/&/g, 'and') }
-                        }}
+                        <button
                             key={subCategory?.id}
-                            onClick={() => setActiveCategory(subCategory?.title)}
+                            onClick={() => {
+                                const queryValue = subCategory?.title?.toLowerCase()?.replace(/\s+/g, '-').replace(/&/g, 'and');
+                                const url = new URL(window.location);
+                                url.searchParams.set('subCategory', queryValue);
+                                window.history.pushState({}, '', url);
+                                setActiveCategory(subCategory?.title.toLowerCase());
+                            }}
                             className={`${activeCategory == subCategory?.title?.toLowerCase() ? 'bg-primary-color text-secondary-text' : ''} px-3 py-1 hover:bg-primary-color hover:text-secondary-text font-semibold border-2 border-primary-color rounded-full capitalize duration-200`}>
                             {subCategory?.title}
-                        </Link>
-                    )}
+                        </button>
+                    )
+                }
+
             </div>
 
             {
-                displayProducts?.length == 0 || displayProducts == undefined ?
-                    <div className='font-bold text-center my-20'>No Products Found!</div>
-                    :
-                    <div className='flex flex-wrap justify-center sm:justify-start items-center gap-2 xl:gap-5'>
-                        {
-                            displayProducts?.map(product =>
-                                <Card key={product?.id} product={product} />
-                            )
-                        }
+                isLoading ?
+                    <div className='w-full flex justify-center items-center pt-32 lg:pt-48'>
+                        <span className="loading loading-bars loading-lg bg-primary-color"></span>
                     </div>
+                    :
+                    <>
+                        {
+                            displayProducts?.length == 0 || displayProducts == undefined ?
+                                <div className='font-bold text-center my-20'>No Products Found!</div>
+                                :
+                                <div className='flex flex-wrap justify-center sm:justify-start items-center gap-2 xl:gap-5'>
+                                    {
+                                        displayProducts?.map(product =>
+                                            <Card key={product?.id} product={product} />
+                                        )
+                                    }
+                                </div>
+                        }
+                    </>
             }
         </div>
     );

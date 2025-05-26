@@ -60,7 +60,7 @@ const Sidebar = () => {
 
 
     return (
-        <div className='md:w-60 lg:w-72 bg-primary-bg dark:bg-secondary-bg h-[calc(100vh-65px)] p-3  sidebar-shadow'>
+        <div className='md:w-60 lg:w-72 bg-primary-bg dark:bg-secondary-bg h-[calc(100vh-65px)] p-3 sidebar-shadow'>
             {/* Main Categories */}
             <div>
                 {
@@ -72,7 +72,7 @@ const Sidebar = () => {
                                 mainCategories?.map(mainCategory =>
                                     <button key={mainCategory?.id} onClick={() => setActiveCategory(mainCategory)} className={`${activeCategory?.title === mainCategory?.title ? 'bg-primary-color text-white' : ''} border border-primary-color p-2 rounded-[4px] duration-300`} >
                                         <Image src={mainCategory?.icon} width={50} height={50} className='w-6 mx-auto pb-1' alt={mainCategory?.title} />
-                                        <span className='font-semibold text-[10px] md:text-xs'>{mainCategory?.title}</span>
+                                        <span className='font-semibold text-[10px] md:text-xs 2xl:text-sm'>{mainCategory?.title}</span>
                                     </button>
                                 )
                             }
