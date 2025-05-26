@@ -22,7 +22,7 @@ const Cart = () => {
     return (
         <>
             <div className={`${hiddenPaths?.includes(pathname) ? 'hidden' : ''}`}>
-                <button onClick={() => setShowCart(true)} className="hidden md:block fixed z-20 top-1/2 right-5 transform -translate-y-1/2 shadow-lg text-[10px] md:text-xs text-primary-text border-4 border-primary-bg dark:border-secondary-bg rounded-md font-semibold">
+                <button onClick={() => setShowCart(true)} className="hidden md:block fixed z-20 top-1/2 right-5 transform -translate-y-1/2 shadow-lg text-[10px] md:text-xs 2xl:text-sm text-primary-text border-4 border-primary-bg dark:border-secondary-bg rounded-md font-semibold">
                     <p className="px-2 py-1 bg-secondary-color flex flex-col items-center rounded-t-md">
                         <IoBag className="text-lg" />
                         {
