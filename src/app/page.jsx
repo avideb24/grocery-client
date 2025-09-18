@@ -15,7 +15,7 @@ const HomePage = async () => {
         <div>
 
             <PageTitle title={'Home'} />
-            
+
             {/* stories */}
             <Stories />
 
